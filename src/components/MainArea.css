@@ -1,0 +1,43 @@
+.subHead {
+  font-family: Arial;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+}
+
+.ModulePlan {
+  width: 80%;
+  display: table-row;
+}
+
+div {
+  margin: 5px;
+}
+
+#y1 {
+  float:left; 
+  background: rgb(165, 28, 28);
+  width:20%;
+  height:280px;
+}
+
+#y2 {
+  float:left; 
+  background:rgb(165, 28, 28);
+  width:20%;
+  height:280px;
+}
+
+#y3 {
+  float:left; 
+  background:rgb(165, 28, 28);
+  width:20%;
+  height:280px;
+}
+
+#y4 {
+  float:left; 
+  background:rgb(165, 28, 28);
+  width:20%;
+  height:280px;
+}

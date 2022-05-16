@@ -1,5 +1,5 @@
 #page {
-  background-color: blueviolet;
+  background-color: #85DCBA;
   font-family: Impact;
   display: grid;
   gap: 1.5rem;
@@ -17,26 +17,27 @@
 }
 
 #page > header {
-  background-color: lime;
+  text-align: left;
+  background-color: #E8A87C;
   grid-area: head;
   font-size: 40px
 }
 
 #page > nav {
-  background-color: lightblue;
+  background-color: #E27D60;
   grid-area: nav;
 }
 
 
 
 #page > main {
-  background-color: yellow;
+  background-color: #C38D9E;
   grid-area: main;
   font-size: 40px;
 }
 
 #page > footer {
-  background-color: red;
+  background-color: #E8A87C;
   grid-area: foot;
   font-family: 'Courier New';
   padding: 5px;
