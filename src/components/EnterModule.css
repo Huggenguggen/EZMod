@@ -1,0 +1,21 @@
+input[type=text] {
+  box-sizing: border-box;
+  padding:10px;
+  margin:10px;
+  border: 0;
+  border-radius: 10px;
+  border-bottom:1px solid #eee;
+}
+
+button {
+  padding:5px 15px; 
+  background:#ccc; 
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+}
+
+button:active {
+  background-color: grey;
+}

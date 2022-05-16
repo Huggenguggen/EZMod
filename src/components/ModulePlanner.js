@@ -1,3 +1,5 @@
+import EnterModule from "./EnterModule";
+
 function ModulePlanner(props) {
   const { year } = props;
   
@@ -6,6 +8,7 @@ function ModulePlanner(props) {
       <h1>
         {year}
       </h1>
+      <EnterModule />
     </div>
   )
 }

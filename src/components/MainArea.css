@@ -1,8 +1,8 @@
 .subHead {
-  font-family: Arial;
+  font-family: Helvetica;
   text-align: center;
   color: white;
-  font-size: 10px;
+  font-size: 20px;
 }
 
 .ModulePlan {
@@ -16,28 +16,28 @@ div {
 
 #y1 {
   float:left; 
-  background: rgb(165, 28, 28);
+  background: #83677B;
+  height: 600px;
   width:20%;
-  height:280px;
 }
 
 #y2 {
   float:left; 
-  background:rgb(165, 28, 28);
+  background:#83677B;
+  height: 600px;
   width:20%;
-  height:280px;
 }
 
 #y3 {
   float:left; 
-  background:rgb(165, 28, 28);
+  background: #83677B;
+  height: 600px;
   width:20%;
-  height:280px;
 }
 
 #y4 {
   float:left; 
-  background:rgb(165, 28, 28);
+  background: #83677B;
+  height: 600px;
   width:20%;
-  height:280px;
 }
