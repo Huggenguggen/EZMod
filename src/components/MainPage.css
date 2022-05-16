@@ -1,0 +1,44 @@
+#page {
+  background-color: blueviolet;
+  font-family: Impact;
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas: 
+  "head head head head head head head"
+  "nav main main main main main main"
+  "nav main main main main main main"
+  "nav main main main main main main"
+  "nav main main main main main main"
+  "nav main main main main main main"
+  "nav main main main main main main"
+  "nav foot foot foot foot foot foot";
+}
+
+#page > header {
+  background-color: lime;
+  grid-area: head;
+  font-size: 40px
+}
+
+#page > nav {
+  background-color: lightblue;
+  grid-area: nav;
+}
+
+
+
+#page > main {
+  background-color: yellow;
+  grid-area: main;
+  font-size: 40px;
+}
+
+#page > footer {
+  background-color: red;
+  grid-area: foot;
+  font-family: 'Courier New';
+  padding: 5px;
+}
+
