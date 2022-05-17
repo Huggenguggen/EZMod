@@ -1,4 +1,4 @@
-# EZMod
+# EZMod0.1
 
 This project was created by Yu Heng and Chong Yang for Orbital 2022.
 

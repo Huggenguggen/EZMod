@@ -1,6 +1,6 @@
 #page {
-  background-color: rgb(211, 189, 183);
-  font-family: Helvetica;
+  background-color: blueviolet;
+  font-family: Impact;
   display: grid;
   gap: 1.5rem;
   width: 100%;
@@ -17,32 +17,28 @@
 }
 
 #page > header {
-  color: white;
-  text-align: left;
-  background-color: #501B1D;
+  background-color: lime;
   grid-area: head;
   font-size: 40px
 }
 
 #page > nav {
-  text-align: center;
-  font-family: Helvetica;
-  background-color: #64485C;
+  background-color: lightblue;
   grid-area: nav;
 }
 
 
 
 #page > main {
-  background-color: #C38D9E;
+  background-color: yellow;
   grid-area: main;
   font-size: 40px;
 }
 
 #page > footer {
-  background-color: #501B1D;
+  background-color: red;
   grid-area: foot;
-  font-family: Helvetica;
+  font-family: 'Courier New';
   padding: 5px;
 }
 

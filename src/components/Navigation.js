@@ -1,4 +1,4 @@
-
+import React from "react";
 
 function Navigation() {
   return (
@@ -8,6 +8,7 @@ function Navigation() {
       </h1>
       <h1>
         Random Shit
+        
       </h1>
       <h1>
         About
