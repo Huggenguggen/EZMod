@@ -1,16 +1,16 @@
-
+import React from "react";
 
 function Navigation() {
   return (
     <div>
       <h1>
-        Home
+        Planner
       </h1>
       <h1>
-        Random Shit
+        ModReg Advice
       </h1>
       <h1>
-        About
+        NUS FOTD
       </h1>
     </div>
   )

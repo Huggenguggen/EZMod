@@ -2,6 +2,7 @@ import './MainPage.css';
 import Header from './Header';
 import Navigation from './Navigation';
 import MainArea from './MainArea';
+
 import Footer from './Footer';
 
 function MainPage() {
