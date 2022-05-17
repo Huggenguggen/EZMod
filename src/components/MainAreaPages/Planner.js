@@ -1,5 +1,5 @@
 import "./Planner.css";
-import ModulePlanner from "../ModulePlanner";
+import ModulePlanner from "./ModulePlanner";
 
 function Planner() {
   return (
