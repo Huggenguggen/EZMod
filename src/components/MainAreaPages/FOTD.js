@@ -1,7 +1,7 @@
 function FOTD() {
   return (
     <div>
-      NUS is a university.
+      NUS is a Singapore university.
     </div>
   )
 }
