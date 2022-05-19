@@ -1,26 +1,25 @@
-/*
+import React from 'react';
 import './App.css';
-import Header from "./components/Header";
-import Navigation from './components/Navigation';
-import MainArea from './components/MainArea';
-import Footer from './components/Footer';
-*/
-import MainPage from "./components/MainPage";
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Home from './pages/Home';
+import Reports from './pages/Reports';
+import Products from './pages/Products';
 
 
 function App() {
   return (
-    <div className="App">
-      <MainPage />
-    </div>
+    <>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/reports' component={Reports} />
+        <Route path='/products' component={Products} />
+      </Switch>
+    </Router>
+    </>
   );
 }
-/*
-<section id="page">
-        <header><Header /></header>
-        <main><MainArea /></main>
-        <nav><Navigation /></nav>
-        <footer><Footer /></footer>
-      </section>
-*/
+
 export default App;
