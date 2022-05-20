@@ -1,9 +1,10 @@
 import React from 'react';
+import Planner from './Planner';
 
 function Home() {
   return (
     <div className='home'>
-      <h1>Home</h1>
+      <Planner />
     </div>
   );
 }

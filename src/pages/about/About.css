@@ -1,0 +1,7 @@
+.about {
+  display: flex;
+}
+
+#aboutText {
+  position: absolute;
+}

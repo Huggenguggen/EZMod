@@ -21,5 +21,11 @@ export const SidebarData = [
     path: '/products',
     icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
+  },
+  {
+    title: 'About',
+    path: '/about',
+    icon: <AiIcons.AiOutlineInfoCircle />,
+    cName: 'nav-text'
   }
 ];

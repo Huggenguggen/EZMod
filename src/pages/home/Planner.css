@@ -1,0 +1,51 @@
+.subHead {
+  font-family: Helvetica;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+
+.ModulePlan {
+  width: 100%;
+  display: table-row;
+}
+
+div {
+  margin: 5px;
+}
+
+#catchphrase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  padding: 10px;
+}
+
+#y1 {
+  float:left; 
+  background: #ffffff;
+  height: 600px;
+  width:23%;
+}
+
+#y2 {
+  float:left; 
+  background:#ffffff;
+  height: 600px;
+  width:23%;
+}
+
+#y3 {
+  float:left; 
+  background: #ffffff;
+  height: 600px;
+  width:23%;
+}
+
+#y4 {
+  float:left; 
+  background: #ffffff;
+  height: 600px;
+  width:23%;
+}
