@@ -11,14 +11,17 @@ function EnterModule() {
   }
 
   function addMod(description) {
-    const newMods = [
-      ...mods,
-      {
-        description: description,
-      }
-    ];
-    setMods(newMods);
-    console.log(newMods);
+    if (description !== "") {
+      const newMods = [
+        ...mods,
+        {
+          description: description,
+        }
+      ];
+      setMods(newMods);
+      console.log(newMods);
+      setNewModText("");
+    }
   }
 
   return (
@@ -35,7 +38,10 @@ function EnterModule() {
               onChange={(event) => setNewModText(event.target.value)}
             />
           </label>
-          <input type="submit" value="Add" />
+          <input 
+            type="submit" 
+            value="Add" 
+          />
         </form>
       </div>
 
@@ -44,12 +50,21 @@ function EnterModule() {
           <thead>
             <tr>
               <th>Module</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
-            {mods.map((mod, index) => (
+            {mods.map((mod) => (
               <tr key={mod.description}>
                 <td>{mod.description}</td>
+                <td>
+                  <input 
+                    type="submit" 
+                    value="remove"
+                    onClick={() => setNewModText("")} 
+                    // Remove button does not work yet 
+                  />
+                </td>
               </tr>
             ))}
           </tbody>
