@@ -7,7 +7,7 @@ input[type=text] {
   border-radius: 10px;
 }
 
-button {
+input {
   padding:5px 15px; 
   background:#ccc; 
   border:0 none;
