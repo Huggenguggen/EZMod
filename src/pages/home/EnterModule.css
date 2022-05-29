@@ -1,21 +1,29 @@
-input[type=text] {
-  box-sizing: border-box;
-  width: 60%;
-  padding: 10px;
-  margin: 10px;
-  border: 5;
-  border-radius: 10px;
+input[type='text'] {
+	box-sizing: border-box;
+	width: 60%;
+	padding: 10px;
+	margin: 10px;
+	border: 5;
+	border-radius: 10px;
 }
 
 input {
-  padding:5px 15px; 
-  background:#ccc; 
-  border:0 none;
-  cursor:pointer;
-  -webkit-border-radius: 5px;
-  border-radius: 5px; 
+	padding: 5px 15px;
+	background: #ccc;
+	border: 0 none;
+	cursor: pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 button:active {
-  background-color: grey;
+	background-color: grey;
+}
+.btn-action {
+	opacity: 0.7;
+	background: red;
+	color: white;
+}
+.btn-action:hover {
+	opacity: 1;
 }

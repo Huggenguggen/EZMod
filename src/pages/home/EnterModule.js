@@ -1,27 +1,38 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import "./EnterModule.css";
 
-function EnterModule() {
-  const [mods, setMods] = useState([]);
+function EnterModule(props) {
+	const { category, onNewMod, mods, onDelete } = props;
   const [newModText, setNewModText] = useState("");
 
+  let filteredMods = [];
+
+  if (mods !== null) {
+    filteredMods = mods.filter((mod) => mod.category === category);
+  }
+  
   function handleAddMod(event) {
-    event.preventDefault();
-    addMod(newModText);
+		event.preventDefault();
+		addMod(newModText);
+	}
+
+  function removeMod(event) {
+    onDelete(event.target.id);
   }
 
   function addMod(description) {
-    if (description !== "") {
-      const newMods = [
-        ...mods,
-        {
-          description: description,
-        }
-      ];
-      setMods(newMods);
-      console.log(newMods);
-      setNewModText("");
-    }
+		if (description !== '') {
+			const newMod = {
+				id: uuidv4(),
+				description: description,
+				category: category,
+			};
+
+			onNewMod(newMod);
+
+			setNewModText('');
+		}
   }
 
   return (
@@ -54,15 +65,16 @@ function EnterModule() {
             </tr>
           </thead>
           <tbody>
-            {mods.map((mod) => (
+            {filteredMods.map((mod) => (
               <tr key={mod.description}>
                 <td>{mod.description}</td>
                 <td>
                   <input 
-                    type="submit" 
+                    className="btn-action"
+                    id={mod.id}
+                    type="button" 
                     value="remove"
-                    onClick={() => setNewModText("")} 
-                    // Remove button does not work yet 
+                    onClick={removeMod} 
                   />
                 </td>
               </tr>
