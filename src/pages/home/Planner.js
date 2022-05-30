@@ -18,8 +18,16 @@ function Planner() {
     });
   }
 
+  //deletes based on uuid out of the entire list of mods
   function deleteHandler(modID) {
     const filteredMods = mods.filter((mod) => mod.id !== modID);
+    localStorage.setItem('mods', JSON.stringify(filteredMods));
+    setMods(filteredMods);
+  }
+
+  //delete all local storage
+  function deleteLocalHandler() {
+    const filteredMods = [];
     localStorage.setItem('mods', JSON.stringify(filteredMods));
     setMods(filteredMods);
   }
@@ -84,6 +92,15 @@ function Planner() {
             />
           </header>
         </div>
+      </div>
+      <div>
+      <input 
+        id="remove-all"
+        className="btn-action"
+        type="button" 
+        value="remove all"
+        onClick={deleteLocalHandler} 
+        />
       </div>
     </div>
   )

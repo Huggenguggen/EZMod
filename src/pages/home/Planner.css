@@ -49,3 +49,8 @@ div {
   height: 600px;
   width:23%;
 }
+
+#remove-all {
+  display: block;
+  margin: auto;
+}
