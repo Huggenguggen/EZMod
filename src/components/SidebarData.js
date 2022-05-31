@@ -9,6 +9,12 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
+    title: 'Module Info',
+    path: '/ModInfo',
+    icon: <AiIcons.AiOutlineInfoCircle />,
+    cName: 'nav-text'
+  },
+  {
     title: 'About',
     path: '/about',
     icon: <AiIcons.AiOutlineInfoCircle />,
