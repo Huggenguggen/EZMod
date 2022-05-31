@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/EZMod/static/css/main.0cb5ee55.css",
+    "main.js": "/EZMod/static/js/main.e48d9732.js",
+    "index.html": "/EZMod/index.html",
+    "main.0cb5ee55.css.map": "/EZMod/static/css/main.0cb5ee55.css.map",
+    "main.e48d9732.js.map": "/EZMod/static/js/main.e48d9732.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0cb5ee55.css",
+    "static/js/main.e48d9732.js"
+  ]
+}
