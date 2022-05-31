@@ -1,6 +1,8 @@
 import "./Planner.css";
 import ModulePlanner from "./ModulePlanner";
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 function Planner() {
 
@@ -24,7 +26,15 @@ function Planner() {
       }
     }
     if (!validMod) {
-      console.log("Invalid selection");
+      toast.warn('No such module', {
+        position: "bottom-right",
+        autoClose: 400,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     }
   }
 
@@ -121,6 +131,17 @@ function Planner() {
         onClick={deleteLocalHandler} 
         />
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={400}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick  
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }

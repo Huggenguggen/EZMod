@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ModInfo() {
   const [modsInfo, setmodsInfo] = useState(null);
@@ -7,7 +9,25 @@ function ModInfo() {
   function handleSearchMod(event) {
 		event.preventDefault();
 		setMod(mod);
-    console.log(mod);
+    let validMod = false;
+    for (var i = 0; i < modsInfo.length; i++) {
+      if (modsInfo[i].moduleCode === mod) {
+        validMod = true;
+      }
+    }
+    if (validMod) {
+      console.log(mod);
+    } else {
+      toast.warn('No such module', {
+        position: "bottom-right",
+        autoClose: 400,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    }
 	}
 
   function searchForModInfo(moduleName) {
@@ -35,7 +55,9 @@ function ModInfo() {
     <div className="modInfo">
       <h1>ModInfo</h1>
       <div>
-        <form onSubmit={handleSearchMod}>
+        <form 
+        autoComplete="off"
+        onSubmit={handleSearchMod}>
         <input 
           style={{ margin: "0 1rem" }}
           type="text"
@@ -57,6 +79,17 @@ function ModInfo() {
             <div><h4>Module Credit: </h4> {searchForModInfo(mod).moduleCredit}</div>
             </div>} 
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={400}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick  
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }
