@@ -11,23 +11,39 @@ function Planner() {
   const [modsInfo, setmodsInfo] = useState(null);
 
   function newModHandler(newMod) {
-    console.log(newMod);
-    console.log(mods);
+    //console.log(newMod);
+    //console.log(mods);
     let validMod = false;
     for (var i = 0; i < modsInfo.length; i++) {
       if (modsInfo[i].moduleCode === newMod.description) {
-        let prevMods = [...mods, newMod];
-        validMod = true;
-        //save the list into local storage
-        localStorage.setItem('mods', JSON.stringify(prevMods));
-        setMods((prev) => {
-          return [...prev, newMod];
-        });
+        //console.log(newMod.description);
+        if (!mods.every((e) => e.description !== newMod.description)) {
+          toast.warn('Module already in plan', {
+            position: "top-right",
+            autoClose: 400,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
+            validMod = true;
+
+        } else {
+          let prevMods = [...mods, newMod];
+          validMod = true;
+          //save the list into local storage
+          localStorage.setItem('mods', JSON.stringify(prevMods));
+          setMods((prev) => {
+            return [...prev, newMod];
+          });
+        }
       }
     }
+
     if (!validMod) {
       toast.warn('No such module', {
-        position: "bottom-right",
+        position: "top-right",
         autoClose: 400,
         hideProgressBar: true,
         closeOnClick: true,
@@ -77,44 +93,89 @@ function Planner() {
       </header>
 
       <div className="ModulePlan">
-        <div id="y1">
+        <div id="y1s1">
           <header className="subHead">
             <ModulePlanner 
-            year="Year 1"
-            category='year1'
+            year="Year 1 Sem 1"
+            category='year1sem1'
             mods={mods}
             onNewMod={newModHandler}
             onDelete={deleteHandler}
             />
           </header>
         </div>
-        <div id="y2">
+        <div id="y1s2">
           <header className="subHead">
             <ModulePlanner 
-            year="Year 2"
-            category='year2'
+            style={{padding: "25px"}}
+            year="Year 1 Sem 2"
+            category='year1sem2'
             mods={mods}
             onNewMod={newModHandler}
             onDelete={deleteHandler}
             />
           </header>
         </div>
-        <div id="y3">
+        <div id="y2s1">
           <header className="subHead">
-            <ModulePlanner
-            year="Year 3"
-            category='year3'
+            <ModulePlanner 
+            year="Year 2 Sem 1"
+            category='year2sem1'
             mods={mods}
             onNewMod={newModHandler}
             onDelete={deleteHandler}
             />
           </header>
         </div>
-        <div id="y4">
+        <div id="y2s2">
           <header className="subHead">
-            <ModulePlanner
-            year="Year 4"
-            category='year4'
+            <ModulePlanner 
+            year="Year 2 Sem 2"
+            category='year2sem2'
+            mods={mods}
+            onNewMod={newModHandler}
+            onDelete={deleteHandler}
+            />
+          </header>
+        </div>
+        <div id="y3s1">
+          <header className="subHead">
+            <ModulePlanner 
+            year="Year 3 Sem 1"
+            category='year3sem1'
+            mods={mods}
+            onNewMod={newModHandler}
+            onDelete={deleteHandler}
+            />
+          </header>
+        </div>
+        <div id="y3s2">
+          <header className="subHead">
+            <ModulePlanner 
+            year="Year 3 Sem 2"
+            category='year3sem2'
+            mods={mods}
+            onNewMod={newModHandler}
+            onDelete={deleteHandler}
+            />
+          </header>
+        </div>
+        <div id="y4s1">
+          <header className="subHead">
+            <ModulePlanner 
+            year="Year 4 Sem 1"
+            category='year4sem1'
+            mods={mods}
+            onNewMod={newModHandler}
+            onDelete={deleteHandler}
+            />
+          </header>
+        </div>
+        <div id="y4s2">
+          <header className="subHead">
+            <ModulePlanner 
+            year="Year 4 Sem 2"
+            category='year4sem2'
             mods={mods}
             onNewMod={newModHandler}
             onDelete={deleteHandler}

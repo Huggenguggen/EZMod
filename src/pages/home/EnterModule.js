@@ -22,28 +22,30 @@ function EnterModule(props) {
   }
 
   function addMod(description) {
+    //console.log(description, description);
 		if (description !== '') {
 			const newMod = {
 				id: uuidv4(),
-				description: description,
+				description: description.toUpperCase(),
 				category: category,
 			};
 
 			onNewMod(newMod);
 
 			setNewModText('');
-		}
+		} else {
+
+    }
   }
 
   return (
     <>
       <div>
-        <h2>Add Module</h2>
         <form onSubmit={handleAddMod}>
           <label>
             Module:
             <input
-              style={{ margin: "0 1rem" }}
+              style={{ margin: "0 auto", width: "100%" }}
               type="text"
               value={newModText}
               onChange={(event) => setNewModText(event.target.value)}
@@ -57,7 +59,10 @@ function EnterModule(props) {
       </div>
 
       <div>
-        <table style={{ margin: "0 auto", width: "100%" }}>
+        <table style={{ margin: "0 auto", 
+                        width: "100%", 
+                        fontSize: "15px", 
+                        borderSpacing: "5px" }}>
           <thead>
             <tr>
               <th>Module</th>

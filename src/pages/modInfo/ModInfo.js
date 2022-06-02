@@ -4,19 +4,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function ModInfo() {
   const [modsInfo, setmodsInfo] = useState(null);
-  const [mod, setMod] = useState("");
+  const [modName, setModName] = useState("");
 
   function handleSearchMod(event) {
 		event.preventDefault();
-		setMod(mod);
+		setModName(modName);
     let validMod = false;
     for (var i = 0; i < modsInfo.length; i++) {
-      if (modsInfo[i].moduleCode === mod) {
+      if (modsInfo[i].moduleCode === modName.toUpperCase()) {
         validMod = true;
       }
     }
     if (validMod) {
-      console.log(mod);
+      console.log(modName);
     } else {
       toast.warn('No such module', {
         position: "bottom-right",
@@ -32,11 +32,11 @@ function ModInfo() {
 
   function searchForModInfo(moduleName) {
     for (var i = 0; i < modsInfo.length; i++) {
-      if (modsInfo[i].moduleCode === moduleName) {
+      if (modsInfo[i].moduleCode === moduleName.toUpperCase()) {
         return modsInfo[i];
       }
     }
-    return "No such mod";
+    return {};
   }
 
   const url = "https://api.nusmods.com/v2/2021-2022/moduleInfo.json";
@@ -61,8 +61,8 @@ function ModInfo() {
         <input 
           style={{ margin: "0 1rem" }}
           type="text"
-          value={mod}
-          onChange={(event) => setMod(event.target.value)}/>
+          value={modName}
+          onChange={(event) => setModName(event.target.value)}/>
           <input 
             type="submit" 
             value="Add" 
@@ -74,13 +74,22 @@ function ModInfo() {
           {!modsInfo 
           ? <div>loading...</div>
           : <div>
-            <div><h4>Title: </h4>{searchForModInfo(mod).title}</div>
-            <div><h4>Description: </h4>{searchForModInfo(mod).description}</div>
-            <div><h4>Module Credit: </h4> {searchForModInfo(mod).moduleCredit}</div>
+            <div><h4>Title: </h4>{searchForModInfo(modName).title}</div>
+            <div><h4>Description: </h4>{searchForModInfo(modName).description}</div>
+            <div><h4>Prerequisites: </h4>{searchForModInfo(modName).prerequisite 
+                                          ? searchForModInfo(modName).prerequisite
+                                          : "No corequisites"}</div>
+            <div><h4>Preclusion: </h4>{searchForModInfo(modName).preclusion 
+                                          ? searchForModInfo(modName).preclusion
+                                          : "No corequisites"}</div>
+            <div><h4>Corequisite: </h4>{searchForModInfo(modName).corequisite 
+                                          ? searchForModInfo(modName).corequisite
+                                          : "No corequisites"}</div>
+            <div><h4>Module Credit: </h4> {searchForModInfo(modName).moduleCredit}</div>
             </div>} 
       </div>
       <ToastContainer
-        position="bottom-right"
+        position="top-right"
         autoClose={400}
         hideProgressBar={false}
         newestOnTop={false}
