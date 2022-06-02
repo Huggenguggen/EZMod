@@ -8,8 +8,10 @@
   background-color: #060b26;
   height: 80px;
   display: flex;
+  width: 98%;
   justify-content: flex-start;
   align-items: center;
+  z-index: 99 !important;
 }
 
 .menu-bars {

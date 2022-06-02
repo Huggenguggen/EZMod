@@ -5,7 +5,7 @@ function ModulePlanner(props) {
 
 	return (
 		<div className='ModulePlanner'>
-			<h1>{year}</h1>
+			<h1 style={ {fontSize: "25px"} }>{year}</h1>
 			<EnterModule
 				category={category}
 				onNewMod={onNewMod}
