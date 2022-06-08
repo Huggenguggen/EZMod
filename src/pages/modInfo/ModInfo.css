@@ -1,0 +1,27 @@
+.ModuleInfo {
+  display: inline-block;
+}
+
+#prereq {
+  float: left;
+}
+
+#description {
+  float: left;
+}
+
+#credit {
+  float: left;
+}
+
+#fulfill {
+  float: left;
+}
+
+#preclu {
+  float: left;
+}
+
+#coreq {
+  float: left;
+}
