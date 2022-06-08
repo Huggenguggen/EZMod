@@ -1,54 +1,72 @@
-import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
+import React, { useState } from "react";
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ModInfo() {
-  const [modsInfo, setmodsInfo] = useState(null);
+  //const [modsInfo, setmodsInfo] = useState(null);
   const [modName, setModName] = useState("");
+  const [evenMoreInfo, setevenMoreInfo] = useState(null);
 
-  function handleSearchMod(event) {
-		event.preventDefault();
-		setModName(modName);
-    let validMod = false;
-    for (var i = 0; i < modsInfo.length; i++) {
-      if (modsInfo[i].moduleCode === modName.toUpperCase()) {
-        validMod = true;
-      }
-    }
-    if (validMod) {
-      console.log(modName);
-    } else {
-      toast.warn('No such module', {
-        position: "bottom-right",
-        autoClose: 400,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
-    }
-	}
+  //const url = "https://api.nusmods.com/v2/2021-2022/moduleInfo.json";
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     const item = data;
+  //     setmodsInfo(item);
+  //   }
+  //   fetchData()
+  // }, [])
 
-  function searchForModInfo(moduleName) {
-    for (var i = 0; i < modsInfo.length; i++) {
-      if (modsInfo[i].moduleCode === moduleName.toUpperCase()) {
-        return modsInfo[i];
+  //queries for even more information from the nusmods API
+  async function queryMod(query) {
+    let api_req = "https://api.nusmods.com/v2/2021-2022/modules/";
+    api_req += query + ".json";
+    fetch(api_req).then((response) => {
+      if (response.ok) {
+        return response.json();
       }
-    }
-    return {};
+      throw new Error('Something went wrong');
+    })
+    .then((responseJson) => {
+      const item = responseJson;
+      setevenMoreInfo(item);
+      console.log("evenMoreInfo", evenMoreInfo);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 
-  const url = "https://api.nusmods.com/v2/2021-2022/moduleInfo.json";
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(url);
-      const data = await response.json();
-      const item = data;
-      setmodsInfo(item);
+  function displayPrereqTree(tree) {
+    console.log(tree);
+    //assumes that there are or options
+    function displayOr(subtree) {
+      return (
+        <div>
+          {subtree.or.map(mod => <div><h4>OR</h4><h5>{mod}</h5></div>)}
+        </div>
+      )
     }
-    fetchData()
-  }, [])
+    //top level and
+    if (tree.hasOwnProperty('and')) {
+      return (
+        <div>
+          {tree.and.map(mods => mods.hasOwnProperty('or')
+                            ? <div><h4>AND</h4>{displayOr(mods)}</div>
+                            : <div><h4>AND</h4><h5>{mods}</h5></div>)}
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          {tree.hasOwnProperty('or')
+            ? displayOr(tree.or)
+            : <h5>{tree[0]}</h5>}
+        </div>
+      )
+    }
+  }
   
 
   return (
@@ -56,37 +74,31 @@ function ModInfo() {
       <h1>ModInfo</h1>
       <div>
         <form 
-        autoComplete="off"
-        onSubmit={handleSearchMod}>
+        autoComplete="off">
         <input 
           style={{ margin: "0 1rem" }}
           type="text"
           value={modName}
-          onChange={(event) => setModName(event.target.value)}/>
-          <input 
-            type="submit" 
-            value="Add" 
-          />
+          onChange={(event) => {
+            setModName(event.target.value.toUpperCase())
+            queryMod(event.target.value.toUpperCase())
+            }}/>
         </form>
         
       </div>
       <div>
-          {!modsInfo 
-          ? <div>loading...</div>
-          : <div>
-            <div><h4>Title: </h4>{searchForModInfo(modName).title}</div>
-            <div><h4>Description: </h4>{searchForModInfo(modName).description}</div>
-            <div><h4>Prerequisites: </h4>{searchForModInfo(modName).prerequisite 
-                                          ? searchForModInfo(modName).prerequisite
-                                          : "No corequisites"}</div>
-            <div><h4>Preclusion: </h4>{searchForModInfo(modName).preclusion 
-                                          ? searchForModInfo(modName).preclusion
-                                          : "No corequisites"}</div>
-            <div><h4>Corequisite: </h4>{searchForModInfo(modName).corequisite 
-                                          ? searchForModInfo(modName).corequisite
-                                          : "No corequisites"}</div>
-            <div><h4>Module Credit: </h4> {searchForModInfo(modName).moduleCredit}</div>
-            </div>} 
+          <div>
+            <h3>
+              Fulfill Requirements: {evenMoreInfo !== null && evenMoreInfo.hasOwnProperty('fulfillRequirements') 
+                                      ? evenMoreInfo.fulfillRequirements.map(mod => <h4>{mod}</h4>)
+                                      : "Does not fulfill any requirements"}
+            </h3>
+            <h3>
+              Prerequisites: {evenMoreInfo !== null && evenMoreInfo.hasOwnProperty('prereqTree')
+                              ? displayPrereqTree(evenMoreInfo.prereqTree)
+                              : "No Prereqs"}
+            </h3>
+          </div> 
       </div>
       <ToastContainer
         position="top-right"
