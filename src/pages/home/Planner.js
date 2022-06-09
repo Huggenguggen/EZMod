@@ -3,6 +3,7 @@ import ModulePlanner from "./ModulePlanner";
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
+import ModuleGraph from "./ModuleGraph";
 
 function Planner() {
 
@@ -191,6 +192,9 @@ function Planner() {
         value="remove all"
         onClick={deleteLocalHandler} 
         />
+      </div>
+      <div>
+        <ModuleGraph />
       </div>
       <ToastContainer
         position="bottom-right"
