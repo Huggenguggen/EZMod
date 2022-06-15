@@ -15,18 +15,19 @@ function ModSuggest() {
       mods = JSON.parse(localStorage.getItem('modSuggest'));
       setMods(mods);
     }
+    getModRegData(roundSelect);
   }, [])
 
   async function getModRegData(query) {
-    let api_req = "https://raw.githubusercontent.com/Huggenguggen/modreg-scraper/main/2021-2022%20Sem%202/2021-2022%20Round%200/";
+    let api_req = "";
     if (query === "Round 0") {
-      api_req += "20212022S2R0mongo.json";
+      api_req += "https://raw.githubusercontent.com/Huggenguggen/modreg-scraper/main/2021-2022%20Sem%202/2021-2022%20Round%200/20212022S2R0mongo.json";
     } else if (query === "Round 1") {
-      api_req += "20212022S2R1mongo.json";
+      api_req += "https://raw.githubusercontent.com/Huggenguggen/modreg-scraper/main/2021-2022%20Sem%202/2021-2022%20Round%201/20212022S2R1mongo.json";
     } else if (query === "Round 2") {
-      api_req += "20212022S2R2mongo.json";
+      api_req += "https://raw.githubusercontent.com/Huggenguggen/modreg-scraper/main/2021-2022%20Sem%202/2021-2022%20Round%202/20212022S2R2mongo.json";
     } else {
-      api_req += "20212022S2R3mongo.json";
+      api_req += "https://raw.githubusercontent.com/Huggenguggen/modreg-scraper/main/2021-2022%20Sem%202/2021-2022%20Round%203/20212022S2R3mongo.json";
     }
     fetch(api_req).then((response) => response.json())
       .then((responseJson) => {
@@ -98,12 +99,18 @@ function ModSuggest() {
     return <div>loading...</div>;
   }
   
-  function removeMod(modID) {
-    const filteredMods = mods.filter((mod) => mod.id !== modID);
+  function removeMod(event) {
+    console.log(event.target.id)
+    const filteredMods = mods.filter((mod) => mod.id !== event.target.id);
     localStorage.setItem('modSuggest', JSON.stringify(filteredMods));
     setMods(filteredMods);
   }
   
+  function handleSelectRound(event) {
+    event.preventDefault();
+    console.log("round Select", roundSelect);
+    getModRegData(roundSelect);
+  }
   
   
   
@@ -113,6 +120,18 @@ function ModSuggest() {
       ModSuggest
     </h1>
     <div>
+        <form onSubmit={handleSelectRound}>
+          <label>
+            Pick the ModReg round!
+            <select value={roundSelect} onChange={(event) => setRoundSelect(event.target.value)}>
+              <option value="Round 0">Round 0</option>
+              <option value="Round 1">Round 1</option>
+              <option value="Round 2">Round 2</option>
+              <option value="Round 3">Round 3</option>
+              </select> 
+          </label>
+          <input type="submit" value="Select" />
+        </form>
         <form onSubmit={handleAddMod}>
           <label>
             Modules:
