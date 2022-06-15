@@ -1,0 +1,12 @@
+button:active {
+	background-color: grey;
+}
+.btn-action {
+	opacity: 1;
+	background: rgba(0, 102, 255, 0.491);
+	color: white;
+}
+.btn-action:hover {
+  background: rgb(0, 69, 173);
+	opacity: 1;
+}
