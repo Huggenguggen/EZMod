@@ -95,12 +95,16 @@ function ModInfo() {
     }
   }
   
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
 
   return (
     <div className="modInfo">
       <h1>ModInfo</h1>
       <div>
         <form 
+        onSubmit={handleSubmit}
         autoComplete="off">
         <input 
           style={{ margin: "0 1rem" }}
