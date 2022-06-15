@@ -1,79 +1,174 @@
 import { React, useState, useEffect } from "react";
-import axios from 'axios';
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
-import "./ModSuggest.css";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
+import { v4 as uuidv4 } from 'uuid';
 
 function ModSuggest() {
-  const [modOne, setmodOne] = useState("");
+  const [mods, setMods] = useState([]);
   const [roundSelect, setRoundSelect] = useState("Round 0");
   const [modRegData, setmodRegData] = useState([]);
+  const [newModText, setNewModText] = useState("");
 
   useEffect(() => {
-    async function getModRegData(query) {
-      let api_req = "http://localhost:5000/2021-2022-S2-";
-      if (query == "Round 0") {
-        api_req += "R0";
-      } else if (query == "Round 1") {
-        api_req += "R1";
-      } else if (query == "Round 2") {
-        api_req += "R2";
-      } else {
-        api_req += "R3";
-      }
-      console.log(api_req);
-      const response = await axios.get(api_req);
-      const json = await response.data;
-      setmodRegData(json);
-      console.log(modRegData);
+    let mods = [];
+    if (localStorage.getItem('modSuggest')) {
+      mods = JSON.parse(localStorage.getItem('modSuggest'));
+      setMods(mods);
     }
-
-    getModRegData(roundSelect);
   }, [])
-  
-  function handleSubmit(event) {
-    event.preventDefault();
-		setmodOne(modOne.toUpperCase());
-    console.log(modOne);
+
+  async function getModRegData(query) {
+    let api_req = "https://raw.githubusercontent.com/Huggenguggen/modreg-scraper/main/2021-2022%20Sem%202/2021-2022%20Round%200/";
+    if (query === "Round 0") {
+      api_req += "20212022S2R0mongo.json";
+    } else if (query === "Round 1") {
+      api_req += "20212022S2R1mongo.json";
+    } else if (query === "Round 2") {
+      api_req += "20212022S2R2mongo.json";
+    } else {
+      api_req += "20212022S2R3mongo.json";
+    }
+    fetch(api_req).then((response) => response.json())
+      .then((responseJson) => {
+        const item = responseJson;
+        setmodRegData(item);
+        console.log("modRegData", modRegData);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
+  
+  function makeMod(modtext) {
+    if (modtext !== '') {
+			const newMod = {
+				id: uuidv4(),
+				description: modtext,
+			};
 
-  const options = [
-    'Round 0', 
-    'Round 1',
-    'Round 2',
-    'Round 3'
-  ]
-  const defaultOption = options[0];
+      addNewMod(newMod);
+
+      setNewModText('');
+    }
+    
+    
+  }
+
+  function handleAddMod(event) {
+    event.preventDefault();
+    makeMod(newModText.toUpperCase())
+    getModRegData(roundSelect)
+  }
+
+  function addNewMod(newMod) {
+    if (modRegData !== [] && modRegData.find((mod) => 
+                    mod["Module\rCode"] === newMod.description) !== undefined) {
+    if (mods.every((mod) => mod.description !== newMod.description)) {
+      let prevMods = [...mods, newMod];
+      setMods((prev) => {
+        return [...prev, newMod];
+      });
+      localStorage.setItem('modSuggest', JSON.stringify(prevMods));
+    } else {
+      console.log("Mod already in plan");
+    }
+  } else {
+    toast.warn('No information on this module in this round', {
+      position: "top-right",
+      autoClose: 400,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
+  }
+
+  function getInfo(modCode) {
+    if (modRegData!== []) {
+      const module = modRegData.find((mod) => mod["Module\rCode"] === modCode);
+      if (module !== undefined) {
+        return <div>Module Demand: {module.Demand} Module Vacancy: {module.Vacancy}</div>
+      } else {
+        return <div>No information found for this round: {roundSelect}</div>
+      }
+    }
+    return <div>loading...</div>;
+  }
+  
+  function removeMod(modID) {
+    const filteredMods = mods.filter((mod) => mod.id !== modID);
+    localStorage.setItem('modSuggest', JSON.stringify(filteredMods));
+    setMods(filteredMods);
+  }
+  
+  
+  
+  
   return (
   <div>
     <h1>
       ModSuggest
     </h1>
-    <form 
-        autoComplete="off">
-        <input 
-          onSubmit={handleSubmit}
-          style={{ margin: "0 1rem" }}
-          type="text"
-          value={modOne}
-          onChange={(event) => setmodOne(event.target.value)}/>
-        <input 
-          className="btn-action"
-          type="button" 
-          value="Get info"
-          onClick={handleSubmit} 
-          />
-      </form>
-    <Dropdown options={options} onChange={setRoundSelect} value={defaultOption} placeholder="Select an option" />
+    <div>
+        <form onSubmit={handleAddMod}>
+          <label>
+            Modules:
+            <input
+              style={{ margin: "0 auto", width: "100%" }}
+              type="text"
+              value={newModText}
+              onChange={(event) => setNewModText(event.target.value)}
+            />
+          </label>
+        </form>
+      </div>
 
-    <div>
-    <div>
-      <div>{modRegData !== [] 
-              ? <h4>{modRegData[0]["Module\rCode"]}</h4>
-              : "loading..."}</div>
-    </div>
-    </div>
+      <div>
+        <table style={{ margin: "0 auto", 
+                        width: "100%", 
+                        fontSize: "15px", 
+                        borderSpacing: "5px" }}>
+          <thead>
+            <tr>
+              <th>Module</th>
+              <th>Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            {mods.map((mod) => (
+              <tr key={mod.description}>
+                <td>{mod.description}</td>
+                <td>
+                  {getInfo(mod.description)}
+                </td>
+                <td>
+                  <input 
+                    className="btn-action"
+                    id={mod.id}
+                    type="button" 
+                    value="remove"
+                    onClick={removeMod} 
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={400}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick  
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
   </div>
   )
 }
