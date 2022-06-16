@@ -15,6 +15,12 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
+    title: 'Mod Suggestions',
+    path: '/ModSuggest',
+    icon: <AiIcons.AiOutlineInfoCircle />,
+    cName: 'nav-text'
+  },
+  {
     title: 'About',
     path: '/about',
     icon: <AiIcons.AiOutlineInfoCircle />,
