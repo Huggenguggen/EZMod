@@ -1,27 +1,50 @@
 .ModuleInfo {
   display: inline-block;
+  font-size:20px;
+  padding-left: 1rem;
 }
 
 #prereq {
   float: left;
+  font-size:20px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 3rem
 }
 
 #description {
   float: left;
+  font-size:20px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 #credit {
   float: left;
+  font-size:20px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 #fulfill {
   float: left;
+  font-size:20px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 #preclu {
   float: left;
+  font-size:20px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 3rem
 }
 
 #coreq {
   float: left;
+  font-size:20px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 3rem
 }

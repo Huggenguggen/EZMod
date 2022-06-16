@@ -91,12 +91,12 @@ function ModSuggest() {
     if (modRegData!== []) {
       const module = modRegData.find((mod) => mod["Module\rCode"] === modCode);
       if (module !== undefined) {
-        return <div>Module Demand: {module.Demand} Module Vacancy: {module.Vacancy}</div>
+        return (module.Demand / module.Vacancy).toFixed(2);
       } else {
-        return <div>No information found for this round: {roundSelect}</div>
+        return 0;
       }
     }
-    return <div>loading...</div>;
+    return "loading...";
   }
   
   function removeMod(event) {
@@ -149,15 +149,16 @@ function ModSuggest() {
         <table style={{ margin: "0 auto", 
                         width: "100%", 
                         fontSize: "15px", 
-                        borderSpacing: "5px" }}>
+                        borderSpacing: "5px"}}>
           <thead>
             <tr>
               <th>Module</th>
-              <th>Information</th>
+              <th>Demand/Vacancy Ratio</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody>
-            {mods.map((mod) => (
+            {mods.sort((mod1, mod2) => getInfo(mod2.description) - getInfo(mod1.description)).map((mod) => (
               <tr key={mod.description}>
                 <td>{mod.description}</td>
                 <td>
@@ -176,6 +177,9 @@ function ModSuggest() {
             ))}
           </tbody>
         </table>
+      </div>
+      <div>
+        <h4>*Demand/Vacancy Ratio: The higher the more in-demand, if the ratio is 0, there is no information for the module for this round</h4>
       </div>
       <ToastContainer
         position="bottom-right"

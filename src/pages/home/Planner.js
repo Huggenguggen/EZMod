@@ -1,5 +1,6 @@
 import "./Planner.css";
 import ModulePlanner from "./ModulePlanner";
+import { moduleCheck } from "./ModuleCheck";
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
@@ -30,6 +31,9 @@ function Planner() {
             validMod = true;
 
         } else {
+          //mod exists and mod not already in plan
+          //should run through a function and return an array with error messages
+          //then only add
           let prevMods = [...mods, newMod];
           validMod = true;
           //save the list into local storage
@@ -37,6 +41,10 @@ function Planner() {
           setMods((prev) => {
             return [...prev, newMod];
           });
+          let toastmessages = moduleCheck(prevMods);
+          if (toastmessages.length > 0) {
+            console.log("THINGS");
+          }
         }
       }
     }
