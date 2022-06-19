@@ -159,12 +159,12 @@ function ModSuggest() {
           </thead>
           <tbody>
             {mods.sort((mod1, mod2) => getInfo(mod2.description) - getInfo(mod1.description)).map((mod) => (
-              <tr key={mod.description}>
+              <tr key={mod.description} style={{textAlign: "center"}}>
                 <td>{mod.description}</td>
-                <td>
+                <td style={{textAlign: "center"}}>
                   {getInfo(mod.description)}
                 </td>
-                <td>
+                <td style={{textAlign: "center"}}>
                   <input 
                     className="btn-action"
                     id={mod.id}
