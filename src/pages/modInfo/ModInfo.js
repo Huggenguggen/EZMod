@@ -71,7 +71,7 @@ function ModInfo() {
 
   function handlePreclusions(preclusions) {
     console.log("preclusions", preclusions);
-    const regex = /([A-Z]{2}\d{4}[A-Z]|[A-Z]{2}\d{4}|[A-Z]{3}\d{4})/gi;
+    const regex = /([A-Z]{2}\d{4}[A-Z]|[A-Z]{2}\d{4}|[A-Z]{3}\d{4}|[A-Z]{4}\d{4})/gi;
     const matches = [...preclusions.matchAll(regex)];
     console.log("preclus matches", matches);
     if (matches.length > 0) {
@@ -84,7 +84,7 @@ function ModInfo() {
 
   function handleCoreqs(coreqs) {
     console.log("corequisites", coreqs);
-    const regex = /([A-Z]{2}\d{4}[A-Z]|[A-Z]{2}\d{4}|[A-Z]{3}\d{4})/gi;
+    const regex = /([A-Z]{2}\d{4}[A-Z]|[A-Z]{2}\d{4}|[A-Z]{3}\d{4}|[A-Z]{4}\d{4})/gi;
     const matches = [...coreqs.matchAll(regex)];
     console.log("coreq matches", matches);
     if (matches.length > 0) {
