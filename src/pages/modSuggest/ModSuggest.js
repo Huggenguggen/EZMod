@@ -108,8 +108,9 @@ function ModSuggest() {
   
   function handleSelectRound(event) {
     event.preventDefault();
-    console.log("round Select", roundSelect);
-    getModRegData(roundSelect);
+    setRoundSelect(event.target.value);
+    //console.log("round Select", roundSelect);
+    getModRegData(event.target.value);
   }
   
   
@@ -120,17 +121,18 @@ function ModSuggest() {
       ModSuggest
     </h1>
     <div>
-        <form onSubmit={handleSelectRound}>
+        <form>
           <label>
             Pick the ModReg round!
-            <select value={roundSelect} onChange={(event) => setRoundSelect(event.target.value)}>
+            <select value={roundSelect} onChange={(event) => {
+                          handleSelectRound(event);
+                          }}>
               <option value="Round 0">Round 0</option>
               <option value="Round 1">Round 1</option>
               <option value="Round 2">Round 2</option>
               <option value="Round 3">Round 3</option>
               </select> 
           </label>
-          <input type="submit" value="Select" />
         </form>
         <form onSubmit={handleAddMod}>
           <label>
