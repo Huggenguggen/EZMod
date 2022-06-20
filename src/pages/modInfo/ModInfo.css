@@ -7,14 +7,17 @@
 }
 
 #description {
+  clear:both;
   float: left;
 }
 
-#credit {
+#credits {
+  clear:both;
   float: left;
 }
 
 #fulfill {
+  clear:both;
   float: left;
 }
 
@@ -23,5 +26,5 @@
 }
 
 #coreq {
-  float: left;
+  float:left;
 }
