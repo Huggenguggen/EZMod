@@ -203,6 +203,7 @@ function Planner() {
         draggable
         pauseOnHover
       />
+      <div className="sidenote">*Remember to always cross check information with your Faculty!</div>
     </div>
   )
 }

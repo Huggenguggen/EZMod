@@ -160,7 +160,9 @@ function ModInfo() {
                               ? handleCoreqs(evenMoreInfo.corequisite)
                               : "No Corequisites"}
             </div>
+            <div className="sidenote">*Remember to always cross check information with your Faculty!</div>
       </div>
+      
     </div>
   )
 }

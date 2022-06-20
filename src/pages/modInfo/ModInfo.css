@@ -28,3 +28,11 @@
 #coreq {
   float:left;
 }
+
+.sidenote {
+  clear:both;
+  float: left;
+  margin-top: 5rem;
+  font-size: 15px;
+}
+
