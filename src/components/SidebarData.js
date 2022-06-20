@@ -11,13 +11,13 @@ export const SidebarData = [
   {
     title: 'Module Info',
     path: '/ModInfo',
-    icon: <AiIcons.AiOutlineInfoCircle />,
+    icon: <AiIcons.AiOutlineQuestionCircle />,
     cName: 'nav-text'
   },
   {
     title: 'Mod Suggestions',
     path: '/ModSuggest',
-    icon: <AiIcons.AiOutlineInfoCircle />,
+    icon: <AiIcons.AiOutlineBulb />,
     cName: 'nav-text'
   },
   {
