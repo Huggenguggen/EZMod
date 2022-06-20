@@ -212,7 +212,10 @@ function ModCompare() {
           <thead>
             <tr>
               <th>Module</th>
-              <th>Demand/Vacancy Ratio</th>
+              <th>R0</th>
+              <th>R1</th>
+              <th>R2</th>
+              <th>R3</th>
               <th>Remove</th>
             </tr>
           </thead>
@@ -221,20 +224,16 @@ function ModCompare() {
               <tr key={mod.description} style={{textAlign: "center"}}>
                 <td>{mod.description}</td>
                 <td style={{textAlign: "center"}}>
-                  <div>
-                    <div>
-                      Round 0: {getRound0Info(mod.description)}
-                    </div>
-                    <div>
-                      Round 1: {getRound1Info(mod.description)}
-                    </div>
-                    <div>
-                      Round 2: {getRound2Info(mod.description)}
-                    </div>
-                    <div>
-                      Round 3: {getRound3Info(mod.description)}
-                    </div>
-                  </div>
+                {getRound0Info(mod.description)}
+                </td>
+                <td style={{textAlign: "center"}}>
+                {getRound1Info(mod.description)}
+                </td>
+                <td style={{textAlign: "center"}}>
+                {getRound2Info(mod.description)}
+                </td>
+                <td style={{textAlign: "center"}}>
+                {getRound3Info(mod.description)}
                 </td>
                 <td style={{textAlign: "center"}}>
                   <input 
@@ -249,6 +248,9 @@ function ModCompare() {
             ))}
           </tbody>
         </table>
+      </div>
+      <div style={{paddingTop: "10rem"}}>
+
       </div>
       <ToastContainer
         position="bottom-right"
