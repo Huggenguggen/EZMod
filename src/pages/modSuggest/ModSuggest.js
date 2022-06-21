@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import { v4 as uuidv4 } from 'uuid';
+import ModCompare from "./ModCompare";
 
 function ModSuggest() {
   const [mods, setMods] = useState([]);
@@ -33,7 +34,7 @@ function ModSuggest() {
       .then((responseJson) => {
         const item = responseJson;
         setmodRegData(item);
-        console.log("modRegData", modRegData);
+        //console.log("modRegData", modRegData);
       })
       .catch((error) => {
         console.log(error);
@@ -182,6 +183,9 @@ function ModSuggest() {
       </div>
       <div>
         <h4>*Demand/Vacancy Ratio: The higher the more in-demand, if the ratio is 0, there is no information for the module for this round</h4>
+      </div>
+      <div style={{paddingTop: "10rem"}}>
+        <ModCompare />
       </div>
       <ToastContainer
         position="bottom-right"
