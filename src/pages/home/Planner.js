@@ -73,7 +73,7 @@ function Planner() {
     setMods(filteredMods);
   }
 
-  const url = "https://api.nusmods.com/v2/2021-2022/moduleInfo.json";
+  const url = "https://api.nusmods.com/v2/2021-2022/moduleList.json";
   useEffect(() => {
     let mods = [];
     if (localStorage.getItem('mods')) {
