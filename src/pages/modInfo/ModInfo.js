@@ -31,7 +31,7 @@ function ModInfo() {
     .then((responseJson) => {
       const item = responseJson;
       setevenMoreInfo(item);
-      console.log("evenMoreInfo", evenMoreInfo);
+      //console.log("evenMoreInfo", evenMoreInfo);
     })
     .catch((error) => {
       console.log(error);
@@ -39,10 +39,10 @@ function ModInfo() {
   }
 
   function displayPrereqTree(tree) {
-    console.log(tree);
+    //console.log(tree);
     //assumes that there are or options
     function displayOr(subtree) {
-      console.log("OR subtree", subtree);
+      //console.log("OR subtree", subtree);
       return (
         <div>
           {subtree[0].hasOwnProperty('and')
@@ -56,7 +56,7 @@ function ModInfo() {
     }
   
     function displayAnd(subtree) {
-      console.log("AND subtree", subtree);
+      //console.log("AND subtree", subtree);
       return (
         <div>
           {subtree[0].hasOwnProperty('or')
@@ -83,10 +83,10 @@ function ModInfo() {
   }
 
   function handlePreclusions(preclusions) {
-    console.log("preclusions", preclusions);
+    //console.log("preclusions", preclusions);
     const regex = /([A-Z]{2}\d{4}[A-Z]|[A-Z]{2}\d{4}|[A-Z]{3}\d{4}|[A-Z]{4}\d{4})/gi;
     const matches = [...preclusions.matchAll(regex)];
-    console.log("preclus matches", matches);
+    //console.log("preclus matches", matches);
     if (matches.length > 0) {
       return matches.map(mod => <h4>{mod[0]}</h4>)
     }
@@ -96,10 +96,10 @@ function ModInfo() {
   }
 
   function handleCoreqs(coreqs) {
-    console.log("corequisites", coreqs);
+    //console.log("corequisites", coreqs);
     const regex = /([A-Z]{2}\d{4}[A-Z]|[A-Z]{2}\d{4}|[A-Z]{3}\d{4}|[A-Z]{4}\d{4})/gi;
     const matches = [...coreqs.matchAll(regex)];
-    console.log("coreq matches", matches);
+    //console.log("coreq matches", matches);
     if (matches.length > 0) {
       return matches.map(mod => <h4>{mod[0]}</h4>)
     }
@@ -107,15 +107,12 @@ function ModInfo() {
       return <h4>Not enough information at this time :(</h4>
     }
   }
-  
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
 
   return (
     <div className="modInfo">
       <h1>ModInfo</h1>
       <div>
+        <label>Module: </label>
         <Autocomplete
         items={modsInfo}
         shouldItemRender={(item, modName) => item.moduleCode.toUpperCase().indexOf(modName.toUpperCase()) > -1}
@@ -137,19 +134,6 @@ function ModInfo() {
           queryMod(value)
         }}
         />
-
-        {/* <form 
-        onSubmit={handleSubmit}
-        autoComplete="off">
-        <input 
-          style={{ margin: "0 1rem" }}
-          type="text"
-          value={modName}
-          onChange={(event) => {
-            setModName(event.target.value.toUpperCase())
-            queryMod(event.target.value.toUpperCase())
-            }}/>
-        </form> */}
         
       </div>
       <div className="ModuleInfo">

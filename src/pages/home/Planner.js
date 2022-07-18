@@ -1,6 +1,6 @@
 import "./Planner.css";
 import ModulePlanner from "./ModulePlanner";
-import { moduleCheck } from "./ModuleCheck";
+//import { moduleCheck } from "./ModuleCheck";
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
@@ -41,10 +41,7 @@ function Planner() {
           setMods((prev) => {
             return [...prev, newMod];
           });
-          let toastmessages = moduleCheck(prevMods);
-          if (toastmessages.length > 0) {
-            console.log("THINGS");
-          }
+          //let toastmessages = moduleCheck(prevMods);
         }
       }
     }
