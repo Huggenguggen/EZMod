@@ -11,12 +11,12 @@ function App() {
   return (
     <>
     <Router>
-      <Navbar />
+    <Navbar />
       <Routes>
-        <Route path='/EZMod' exact element={<Home />} />
-        <Route path='/ModInfo' element={<ModInfo />}/>
-        <Route path='/ModSuggest' element={<ModSuggest />}/>
-        <Route path='/about' element={<About />} />
+      <Route path='/EZMod' exact element={<Home />} />
+      <Route path='/ModInfo' element={<ModInfo />}/>
+      <Route path='/ModSuggest' element={<ModSuggest />}/>
+      <Route path='/about' element={<About />} />
       </Routes>
     </Router>
     </>
