@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "mongoose": "^6.3.8",
     "react": "^16.13.1",
+    "react-autocomplete": "^1.8.1",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.10.0",
     "react-icons": "^3.10.0",

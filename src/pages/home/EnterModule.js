@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import "./EnterModule.css";
+import Autocomplete from 'react-autocomplete';
+import moduleList from '../../ref/moduleList.json';
 
 function EnterModule(props) {
-	const { category, onNewMod, mods, onDelete } = props;
+	const { category, mods, onNewMod, onDelete } = props;
   const [newModText, setNewModText] = useState("");
 
   let filteredMods = [];
@@ -12,9 +14,8 @@ function EnterModule(props) {
     filteredMods = mods.filter((mod) => mod.category === category);
   }
   
-  function handleAddMod(event) {
-		event.preventDefault();
-		addMod(newModText);
+  function handleAddMod(value) {
+		addMod(value);
 	}
 
   function removeMod(event) {
@@ -41,7 +42,32 @@ function EnterModule(props) {
   return (
     <>
       <div>
-        <form onSubmit={handleAddMod}>
+        <label>Module: </label>
+        <form>
+          <label>
+            <Autocomplete
+            items={moduleList}
+            shouldItemRender={(item, modName) => item.moduleCode.toUpperCase().indexOf(modName.toUpperCase()) > -1}
+          getItemValue={item => item.moduleCode}
+          renderItem={(item, highlighted) =>
+            <div
+              key={item.moduleCode}
+              style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+            >
+              {item.moduleCode}
+            </div>
+          }
+            value={newModText}
+            onChange={(event) => setNewModText(event.target.value)}
+            onSelect={(value) => handleAddMod(value)}
+            />
+          </label>
+          <input 
+            type="submit" 
+            value="Add" 
+          />
+        </form>
+        {/* <form onSubmit={handleAddMod}>
           <label>
             Module:
             <input
@@ -55,7 +81,7 @@ function EnterModule(props) {
             type="submit" 
             value="Add" 
           />
-        </form>
+        </form> */}
       </div>
 
       <div>

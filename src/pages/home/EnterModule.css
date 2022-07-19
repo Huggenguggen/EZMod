@@ -28,3 +28,12 @@ button:active {
   background: red;
 	opacity: 1;
 }
+
+input[role='combobox'] {
+  box-sizing: border-box;
+	width: 80%;
+	padding: 10px;
+	margin: 10px;
+	border: 5;
+	border-radius: 10px;
+}

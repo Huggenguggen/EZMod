@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Autocomplete from "react-autocomplete";
 import 'react-toastify/dist/ReactToastify.css';
 import "./ModInfo.css";
 
 function ModInfo() {
   const [modName, setModName] = useState("");
+  const [modsInfo, setmodsInfo] = useState(null);
   const [evenMoreInfo, setevenMoreInfo] = useState(null);
+
+  const url = "https://api.nusmods.com/v2/2021-2022/moduleInfo.json";
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(url);
+      const data = await response.json();
+      const item = data;
+      setmodsInfo(item);
+    }
+    fetchData()
+  }, []);
 
   async function queryMod(query) {
     let api_req = "https://api.nusmods.com/v2/2021-2022/modules/";
@@ -18,7 +31,7 @@ function ModInfo() {
     .then((responseJson) => {
       const item = responseJson;
       setevenMoreInfo(item);
-      console.log("evenMoreInfo", evenMoreInfo);
+      //console.log("evenMoreInfo", evenMoreInfo);
     })
     .catch((error) => {
       console.log(error);
@@ -26,10 +39,10 @@ function ModInfo() {
   }
 
   function displayPrereqTree(tree) {
-    console.log(tree);
+    //console.log(tree);
     //assumes that there are or options
     function displayOr(subtree) {
-      console.log("OR subtree", subtree);
+      //console.log("OR subtree", subtree);
       return (
         <div>
           {subtree[0].hasOwnProperty('and')
@@ -43,7 +56,7 @@ function ModInfo() {
     }
   
     function displayAnd(subtree) {
-      console.log("AND subtree", subtree);
+      //console.log("AND subtree", subtree);
       return (
         <div>
           {subtree[0].hasOwnProperty('or')
@@ -70,10 +83,10 @@ function ModInfo() {
   }
 
   function handlePreclusions(preclusions) {
-    console.log("preclusions", preclusions);
+    //console.log("preclusions", preclusions);
     const regex = /([A-Z]{2}\d{4}[A-Z]|[A-Z]{2}\d{4}|[A-Z]{3}\d{4}|[A-Z]{4}\d{4})/gi;
     const matches = [...preclusions.matchAll(regex)];
-    console.log("preclus matches", matches);
+    //console.log("preclus matches", matches);
     if (matches.length > 0) {
       return matches.map(mod => <h4>{mod[0]}</h4>)
     }
@@ -83,10 +96,10 @@ function ModInfo() {
   }
 
   function handleCoreqs(coreqs) {
-    console.log("corequisites", coreqs);
+    //console.log("corequisites", coreqs);
     const regex = /([A-Z]{2}\d{4}[A-Z]|[A-Z]{2}\d{4}|[A-Z]{3}\d{4}|[A-Z]{4}\d{4})/gi;
     const matches = [...coreqs.matchAll(regex)];
-    console.log("coreq matches", matches);
+    //console.log("coreq matches", matches);
     if (matches.length > 0) {
       return matches.map(mod => <h4>{mod[0]}</h4>)
     }
@@ -94,27 +107,33 @@ function ModInfo() {
       return <h4>Not enough information at this time :(</h4>
     }
   }
-  
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
 
   return (
     <div className="modInfo">
       <h1>ModInfo</h1>
       <div>
-        <form 
-        onSubmit={handleSubmit}
-        autoComplete="off">
-        <input 
-          style={{ margin: "0 1rem" }}
-          type="text"
-          value={modName}
-          onChange={(event) => {
+        <label>Module: </label>
+        <Autocomplete
+        items={modsInfo}
+        shouldItemRender={(item, modName) => item.moduleCode.toUpperCase().indexOf(modName.toUpperCase()) > -1}
+        getItemValue={item => item.moduleCode}
+        renderItem={(item, highlighted) =>
+          <div
+            key={item.moduleCode}
+            style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+          >
+            {item.moduleCode}
+          </div>
+        }
+        value={modName}
+        onChange={(event) => {
             setModName(event.target.value.toUpperCase())
-            queryMod(event.target.value.toUpperCase())
-            }}/>
-        </form>
+            }}
+        onSelect={(value) => {
+          setModName(value)
+          queryMod(value)
+        }}
+        />
         
       </div>
       <div className="ModuleInfo">

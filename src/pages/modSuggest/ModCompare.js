@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
+import Autocomplete from 'react-autocomplete';
 import { v4 as uuidv4 } from 'uuid';
 
 function ModCompare() {
@@ -91,9 +92,9 @@ function ModCompare() {
     
   }
 
-  function handleAddMod(event) {
-    event.preventDefault();
-    makeMod(newModText.toUpperCase())
+  function handleAddMod(value) {
+    //event.preventDefault();
+    makeMod(value.toUpperCase())
     getModRegData()
   }
 
@@ -191,7 +192,29 @@ function ModCompare() {
       ModCompare
     </h1>
     <div>
-        <form onSubmit={handleAddMod}>
+    <label>Modules: </label>
+    <Autocomplete
+      items={modReg3Data}
+      shouldItemRender={(item, modName) => item["Module\rCode"].toUpperCase().indexOf(modName.toUpperCase()) > -1}
+      getItemValue={item => item["Module\rCode"]}
+      renderItem={(item, highlighted) =>
+        <div
+          key={item["id"]}
+          style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+        >
+          {item["Module\rCode"]}
+        </div>
+      }
+      value={newModText}
+      onChange={(event) => {
+          setNewModText(event.target.value.toUpperCase())
+      }}
+      onSelect={(value) => {
+        setNewModText(value)
+        handleAddMod(value)
+      }}
+    />
+        {/* <form onSubmit={handleAddMod}>
           <label>
             Modules:
             <input
@@ -201,7 +224,7 @@ function ModCompare() {
               onChange={(event) => setNewModText(event.target.value)}
             />
           </label>
-        </form>
+        </form> */}
       </div>
 
       <div>
