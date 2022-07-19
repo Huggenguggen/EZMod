@@ -21,6 +21,11 @@
     overflow-x: auto;
     row-gap: 10rem;
     column-gap: 5rem;
+    color: white;
+  }
+
+  #dark .ModulePlan {
+    color: white;
   }
 
   #remove-all {

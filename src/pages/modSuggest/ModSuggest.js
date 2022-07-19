@@ -144,7 +144,8 @@ function ModSuggest() {
           renderItem={(item, highlighted) =>
             <div
               key={item["id"]}
-              style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+              style={{ backgroundColor: highlighted ? '#eee' : 'transparent', 
+                        color: "black"}}
             >
               {item["Module\rCode"]}
             </div>

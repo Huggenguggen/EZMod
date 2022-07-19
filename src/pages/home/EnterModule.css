@@ -7,6 +7,14 @@ input[type='text'] {
 	border-radius: 10px;
 }
 
+#dark #moduleText {
+  color: white;
+}
+
+#dark tbody {
+  color: white;
+}
+
 input {
 	padding: 5px 15px;
 	background: #ccc;

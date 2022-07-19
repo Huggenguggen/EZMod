@@ -12,6 +12,10 @@
   margin-bottom: 0.5rem;
 }
 
+#dark #semester {
+  color: white;
+}
+
 #topline {
   display: inline-flex;
   width: 90%;
@@ -30,6 +34,10 @@
   transition: 300ms;
 }
 
+#dark .navbar {
+  background-color: gray;
+}
+
 .navbar-sidebar {
   background-color: #060b26;
   height: 80px;
@@ -44,10 +52,18 @@
   transition: 850ms;
 }
 
+#dark .navbar-sidebar {
+  background-color: gray;
+}
+
 .menu-bars {
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
+}
+
+#dark .menu-bars {
+  background-color: gray;
 }
 
 .nav-menu {
@@ -59,10 +75,14 @@
   justify-content: center;
   position: absolute;
   top: -50%;
-  left: 15px;
+  left: 20px;
   opacity: 0;
   transition: 850ms;
   transition-delay: 500ms opacity 100ms;
+}
+
+#dark .nav-menu {
+  background-color: gray;
 }
 
 .nav-menu.active {
@@ -70,6 +90,10 @@
   opacity: 100;
   transition: 850ms;
   transition-delay: 500ms opacity 100ms;
+}
+
+#dark .nav-menu.active {
+  background-color: gray;
 }
 
 .nav-text {
@@ -108,6 +132,10 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+#dark .navbar-toggle {
+  background-color: gray;
 }
 
 span {

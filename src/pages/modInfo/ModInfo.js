@@ -120,7 +120,8 @@ function ModInfo() {
         renderItem={(item, highlighted) =>
           <div
             key={item.moduleCode}
-            style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+            style={{ backgroundColor: highlighted ? '#eee' : 'transparent',
+                      color: "black"}}
           >
             {item.moduleCode}
           </div>
@@ -134,7 +135,6 @@ function ModInfo() {
           queryMod(value)
         }}
         />
-        
       </div>
       <div className="ModuleInfo">
             <div id="title">
