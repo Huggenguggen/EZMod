@@ -22,6 +22,7 @@
   height: 80px;
   display: flex;
   width: 230px;
+  min-width: 230px;
   border-radius: 25px;
   justify-content: flex-start;
   align-items: center;
@@ -34,6 +35,7 @@
   height: 80px;
   display: flex;
   width: 230px;
+  min-width: 230px;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   justify-content: flex-start;
@@ -57,7 +59,7 @@
   justify-content: center;
   position: absolute;
   top: -50%;
-  left: 10px;
+  left: 15px;
   opacity: 0;
   transition: 850ms;
   transition-delay: 500ms opacity 100ms;
