@@ -37,7 +37,6 @@ function App() {
     </Router>
     <div class="ReactToggle">
       <Toggle onChange={toggleTheme} defaultChecked={theme === 'dark'}/>
-      <label className="modeLabel"> {theme === "light" ? "Light mode" : "Dark mode"}</label>
     </div>
     </div>
     </ThemeContext.Provider>
