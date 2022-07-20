@@ -50,9 +50,7 @@ function Navbar() {
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
-              <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
-              </Link>
+              {/* This box is necessary for visual purpose else the dropdown bar won't look nice */}
             </li>
             {SidebarData.map((item, index) => {
               return (

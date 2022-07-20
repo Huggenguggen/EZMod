@@ -74,10 +74,10 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  top: -50%;
+  top: 5%;
   left: 20px;
   opacity: 0;
-  transition: 850ms;
+  transition: 450ms;
   transition-delay: 500ms opacity 100ms;
 }
 
@@ -88,7 +88,7 @@
 .nav-menu.active {
   top: 5rem;
   opacity: 100;
-  transition: 850ms;
+  transition: 450ms;
   transition-delay: 500ms opacity 100ms;
 }
 
@@ -128,7 +128,7 @@
 .navbar-toggle {
   background-color: #060b26;
   width: 100%;
-  height: 80px;
+  height: 25px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
