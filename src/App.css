@@ -14,7 +14,7 @@
 
 #dark {
   background-color: rgb(29, 29, 29);
-  color: rgb(250, 250, 250);
+  color: rgb(250, 250, 250);  
 }
 
 .home {
@@ -34,6 +34,10 @@
 
 .ReactToggle {
   display: flex;
-  height: 100vw;
+  height: 5.5vw;
   width: 100vw;
+}
+
+a {
+  color: rgb(0, 132, 255)
 }
