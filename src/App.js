@@ -21,7 +21,8 @@ function App() {
 
   const toggleTheme = () => {
     setTheme((curr) => curr === "light" ? "dark" : "light");
-    document.html.style.backgroundColor = theme === "light" ? "white" : "#1d1d1d";
+    document.body.style.backgroundColor = theme === "dark" ? "white" : "#1d1d1d";
+    document.documentElement.style.backgroundColor = theme === "dark" ? "white" : "#1d1d1d";
   }
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
