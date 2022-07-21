@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
+import Toggle from 'react-toggle';
+import "react-toggle/style.css";
+import { BiMoon, BiSun } from "react-icons/bi";
 import { IconContext } from 'react-icons';
 
-function Navbar() {
+function Navbar(props) {
+  const { toggle, theme } = props;
   const [sidebar, setSidebar] = useState(false);
   const [currSem, setCurrSem] = useState("");
 
@@ -14,8 +17,7 @@ function Navbar() {
 
   useEffect(() => {
     var finalRes = ""
-    var today = new Date(),
-    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    var today = new Date()
     if (today.getMonth() + 1 <= 4) {
       finalRes = (today.getFullYear() - 1) + "-" + (today.getFullYear()) + " SEM 2";
     } else if (today.getMonth() + 1 <= 7) {
@@ -43,6 +45,19 @@ function Navbar() {
         </div>
         <div id='semester'>
           <h1>
+            <Toggle 
+              onChange={toggle} 
+              defaultChecked={theme === 'dark'}
+              icons={{
+                checked: 
+                  <div style={{position: 'absolute', bottom: '-0.35em', right: '-0.3em'}}>
+                    <BiMoon size='20'/>
+                  </div>,
+                unchecked: 
+                  <div style={{position: 'absolute', bottom: '-0.35em', right: '-0.3em'}}>
+                      <BiSun size='20'/>
+                  </div>,
+              }}/>
             {currSem}
           </h1>
         </div>

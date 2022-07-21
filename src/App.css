@@ -32,12 +32,6 @@
   font-size: 3rem;
 }
 
-.ReactToggle {
-  display: flex;
-  height: 2.25vw;
-  width: 100vw;
-}
-
 a {
   color: rgb(0, 132, 255)
 }

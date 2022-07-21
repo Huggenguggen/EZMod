@@ -54,6 +54,7 @@
 
 #dark .navbar-sidebar {
   background-color: gray;
+  transition: 850ms;
 }
 
 .menu-bars {
@@ -64,6 +65,7 @@
 
 #dark .menu-bars {
   background-color: gray;
+  transition: 850ms;
 }
 
 .nav-menu {
@@ -74,26 +76,26 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 5%;
+  top: -15%;
   left: 20px;
   opacity: 0;
-  transition: 450ms;
-  transition-delay: 500ms opacity 100ms;
+  transition: top 850ms opacity 600ms;
 }
 
 #dark .nav-menu {
   background-color: gray;
+  transition: top 850ms opacity 600ms;
 }
 
 .nav-menu.active {
   top: 5rem;
   opacity: 100;
-  transition: 450ms;
-  transition-delay: 500ms opacity 100ms;
+  transition: top 850ms opacity 100ms;
 }
 
 #dark .nav-menu.active {
   background-color: gray;
+  transition: top 850ms opacity 600ms;
 }
 
 .nav-text {
@@ -132,12 +134,18 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  transition: 850ms;
 }
 
 #dark .navbar-toggle {
   background-color: gray;
+  transition: 850ms;
 }
 
 span {
   margin-left: 16px;
+}
+
+.react-toggle {
+  top: 10px;
 }

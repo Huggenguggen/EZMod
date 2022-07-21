@@ -28,7 +28,9 @@ function App() {
     <ThemeContext.Provider value={{theme, toggleTheme}}>
     <div class="overall" id={theme}>
     <Router>
-    <Navbar />
+    <Navbar 
+      toggle={toggleTheme} 
+      theme={theme}/>
       <Routes>
       <Route path='/EZMod' exact element={<Home />} />
       <Route path='/ModInfo' element={<ModInfo />}/>
@@ -36,9 +38,6 @@ function App() {
       <Route path='/about' element={<About />} />
       </Routes>
     </Router>
-    <div class="ReactToggle">
-      <Toggle onChange={toggleTheme} defaultChecked={theme === 'dark'}/>
-    </div>
     </div>
     </ThemeContext.Provider>
   );
