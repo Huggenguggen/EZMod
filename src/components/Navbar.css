@@ -23,7 +23,7 @@
 
 .navbar {
   background-color: #060b26;
-  height: 80px;
+  height: 90px;
   display: flex;
   width: 230px;
   min-width: 230px;
@@ -40,7 +40,7 @@
 
 .navbar-sidebar {
   background-color: #060b26;
-  height: 80px;
+  height: 90px;
   display: flex;
   width: 230px;
   min-width: 230px;
@@ -64,7 +64,6 @@
 }
 
 #dark .menu-bars {
-  background-color: gray;
   transition: 850ms;
 }
 
@@ -80,11 +79,13 @@
   left: 20px;
   opacity: 0;
   transition: top 850ms opacity 600ms;
+  transition: background-color 850ms;
 }
 
 #dark .nav-menu {
   background-color: gray;
   transition: top 850ms opacity 600ms;
+  transition: background-color 850ms;
 }
 
 .nav-menu.active {
