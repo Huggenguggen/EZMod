@@ -3,6 +3,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Autocomplete from 'react-autocomplete';
 import { v4 as uuidv4 } from 'uuid';
+import moduleList from '../../ref/moduleList.json';
 
 function ModCompare() {
   const [mods, setMods] = useState([]);
@@ -194,15 +195,16 @@ function ModCompare() {
     <div>
     <label>Modules: </label>
     <Autocomplete
-      items={modReg3Data}
-      shouldItemRender={(item, modName) => item["Module\rCode"].toUpperCase().indexOf(modName.toUpperCase()) > -1}
-      getItemValue={item => item["Module\rCode"]}
+      items={moduleList}
+      shouldItemRender={(item, modName) => item["moduleCode"].toUpperCase().indexOf(modName.toUpperCase()) > -1}
+      getItemValue={item => item["moduleCode"]}
       renderItem={(item, highlighted) =>
         <div
           key={item["id"]}
-          style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+          style={{ backgroundColor: highlighted ? '#eee' : 'transparent', 
+                    color: "black"}}
         >
-          {item["Module\rCode"]}
+          {item["moduleCode"]}
         </div>
       }
       value={newModText}
@@ -214,17 +216,6 @@ function ModCompare() {
         handleAddMod(value)
       }}
     />
-        {/* <form onSubmit={handleAddMod}>
-          <label>
-            Modules:
-            <input
-              style={{ margin: "0 auto", width: "100%" }}
-              type="text"
-              value={newModText}
-              onChange={(event) => setNewModText(event.target.value)}
-            />
-          </label>
-        </form> */}
       </div>
 
       <div>

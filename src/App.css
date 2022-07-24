@@ -7,13 +7,14 @@
   font-family: 'Lato', sans-serif;
 }
 
-.reports,
-.products {
-  display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
+#light {
+  background-color: white;
+  color: black;
+}
+
+#dark {
+  background-color: rgb(29, 29, 29);
+  color: rgb(250, 250, 250);  
 }
 
 .home {
@@ -29,4 +30,8 @@
   height: 90vh;
   justify-content: left;
   font-size: 3rem;
+}
+
+a {
+  color: rgb(0, 132, 255)
 }

@@ -4,6 +4,7 @@ import Autocomplete from "react-autocomplete";
 import 'react-toastify/dist/ReactToastify.css'; 
 import { v4 as uuidv4 } from 'uuid';
 import ModCompare from "./ModCompare";
+import './ModSuggest.css';
 
 function ModSuggest() {
   const [mods, setMods] = useState([]);
@@ -144,7 +145,8 @@ function ModSuggest() {
           renderItem={(item, highlighted) =>
             <div
               key={item["id"]}
-              style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+              style={{ backgroundColor: highlighted ? '#eee' : 'transparent', 
+                        color: "black"}}
             >
               {item["Module\rCode"]}
             </div>
@@ -175,7 +177,8 @@ function ModSuggest() {
         <table style={{ margin: "0 auto", 
                         width: "100%", 
                         fontSize: "15px", 
-                        borderSpacing: "5px"}}>
+                        borderSpacing: "5px",
+                        }}>
           <thead>
             <tr>
               <th>Module</th>

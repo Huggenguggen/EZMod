@@ -4,14 +4,57 @@
   margin-bottom: 0.5rem;
 }
 
+#semester {
+  color: #07003f;
+  margin-left: auto; 
+  margin-right: 0;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#dark #semester {
+  color: white;
+}
+
+#topline {
+  display: inline-flex;
+  width: 90%;
+}
+
 .navbar {
   background-color: #060b26;
-  height: 80px;
+  height: 90px;
   display: flex;
-  width: 98%;
+  width: 230px;
+  min-width: 230px;
+  border-radius: 25px;
   justify-content: flex-start;
   align-items: center;
   z-index: 99 !important;
+  transition: 300ms;
+}
+
+#dark .navbar {
+  background-color: gray;
+}
+
+.navbar-sidebar {
+  background-color: #060b26;
+  height: 90px;
+  display: flex;
+  width: 230px;
+  min-width: 230px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 99 !important;
+  transition: 850ms;
+}
+
+#dark .navbar-sidebar {
+  background-color: gray;
+  transition: 850ms;
 }
 
 .menu-bars {
@@ -20,21 +63,40 @@
   background: none;
 }
 
-.nav-menu {
-  background-color: #060b26;
-  width: 250px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: -100%;
+#dark .menu-bars {
   transition: 850ms;
 }
 
+.nav-menu {
+  background-color: #060b26;
+  width: 230px;
+  border-radius: 25px;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: -15%;
+  left: 20px;
+  opacity: 0;
+  transition: top 850ms opacity 600ms;
+  transition: background-color 850ms;
+}
+
+#dark .nav-menu {
+  background-color: gray;
+  transition: top 850ms opacity 600ms;
+  transition: background-color 850ms;
+}
+
 .nav-menu.active {
-  left: 0;
-  transition: 350ms;
+  top: 5rem;
+  opacity: 100;
+  transition: top 850ms opacity 100ms;
+}
+
+#dark .nav-menu.active {
+  background-color: gray;
+  transition: top 850ms opacity 600ms;
 }
 
 .nav-text {
@@ -69,12 +131,22 @@
 .navbar-toggle {
   background-color: #060b26;
   width: 100%;
-  height: 80px;
+  height: 25px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  transition: 850ms;
+}
+
+#dark .navbar-toggle {
+  background-color: gray;
+  transition: 850ms;
 }
 
 span {
   margin-left: 16px;
+}
+
+.react-toggle {
+  top: 10px;
 }

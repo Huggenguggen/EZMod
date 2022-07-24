@@ -1,4 +1,5 @@
 import EnterModule from "./EnterModule";
+import "./ModulePlanner.css";
 
 function ModulePlanner(props) {
 	const { year, category, mods, onNewMod, onDelete } = props;

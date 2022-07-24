@@ -2,22 +2,11 @@ import React, { useState, useEffect } from "react";
 import Autocomplete from "react-autocomplete";
 import 'react-toastify/dist/ReactToastify.css';
 import "./ModInfo.css";
+import moduleList from '../../ref/moduleList.json';
 
 function ModInfo() {
   const [modName, setModName] = useState("");
-  const [modsInfo, setmodsInfo] = useState(null);
   const [evenMoreInfo, setevenMoreInfo] = useState(null);
-
-  const url = "https://api.nusmods.com/v2/2021-2022/moduleInfo.json";
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(url);
-      const data = await response.json();
-      const item = data;
-      setmodsInfo(item);
-    }
-    fetchData()
-  }, []);
 
   async function queryMod(query) {
     let api_req = "https://api.nusmods.com/v2/2021-2022/modules/";
@@ -114,13 +103,14 @@ function ModInfo() {
       <div>
         <label>Module: </label>
         <Autocomplete
-        items={modsInfo}
+        items={moduleList}
         shouldItemRender={(item, modName) => item.moduleCode.toUpperCase().indexOf(modName.toUpperCase()) > -1}
         getItemValue={item => item.moduleCode}
         renderItem={(item, highlighted) =>
           <div
             key={item.moduleCode}
-            style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+            style={{ backgroundColor: highlighted ? '#eee' : 'transparent',
+                      color: "black"}}
           >
             {item.moduleCode}
           </div>
@@ -134,7 +124,6 @@ function ModInfo() {
           queryMod(value)
         }}
         />
-        
       </div>
       <div className="ModuleInfo">
             <div id="title">

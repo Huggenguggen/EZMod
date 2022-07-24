@@ -42,8 +42,12 @@ function EnterModule(props) {
   return (
     <>
       <div>
-        <label>Module: </label>
-        <form>
+        <h3 id="moduleText">Module: </h3>
+        <form 
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleAddMod(newModText);
+          }}>
           <label>
             <Autocomplete
             items={moduleList}
@@ -52,7 +56,8 @@ function EnterModule(props) {
           renderItem={(item, highlighted) =>
             <div
               key={item.moduleCode}
-              style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+              style={{ backgroundColor: highlighted ? '#eee' : 'transparent', 
+                        color: "black"}}
             >
               {item.moduleCode}
             </div>
@@ -63,28 +68,17 @@ function EnterModule(props) {
             />
           </label>
           <input 
+            onSubmit={(event) => {
+              event.preventDefault();
+              handleAddMod(event.target.value);
+            }}
             type="submit" 
             value="Add" 
           />
         </form>
-        {/* <form onSubmit={handleAddMod}>
-          <label>
-            Module:
-            <input
-              style={{ margin: "0 auto", width: "100%" }}
-              type="text"
-              value={newModText}
-              onChange={(event) => setNewModText(event.target.value)}
-            />
-          </label>
-          <input 
-            type="submit" 
-            value="Add" 
-          />
-        </form> */}
       </div>
 
-      <div>
+      <div id="moduleTable">
         <table style={{ margin: "0 auto", 
                         width: "100%", 
                         fontSize: "15px", 

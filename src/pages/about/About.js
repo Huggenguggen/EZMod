@@ -10,7 +10,6 @@ function About() {
           Created during Orbital 2022. 
         </p>
       </div>
-
       <a href="https://github.com/Huggenguggen/EZMod">GitHub Repo here</a>
     </div>
   )
