@@ -4,7 +4,7 @@ import * as AiIcons from 'react-icons/ai';
 export const SidebarData = [
   {
     title: 'Home',
-    path: '/EZMod',
+    path: '/',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text'
   },
