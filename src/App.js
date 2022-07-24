@@ -33,6 +33,7 @@ function App() {
       theme={theme}/>
       <Routes>
       <Route path='/'  element={<Home />} />  
+      <Route path='/favicon.ico'  element={<Home />} />  
       <Route path='/EZMod' exact element={<Home />} />
       <Route path='/ModInfo' element={<ModInfo />}/>
       <Route path='/ModSuggest' element={<ModSuggest />}/>
