@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/EZMod/static/css/main.6be642f2.css",
-    "main.js": "/EZMod/static/js/main.c6afe0a2.js",
+    "main.css": "/EZMod/static/css/main.afb341ad.css",
+    "main.js": "/EZMod/static/js/main.9616e09d.js",
     "index.html": "/EZMod/index.html",
-    "main.6be642f2.css.map": "/EZMod/static/css/main.6be642f2.css.map",
-    "main.c6afe0a2.js.map": "/EZMod/static/js/main.c6afe0a2.js.map"
+    "main.afb341ad.css.map": "/EZMod/static/css/main.afb341ad.css.map",
+    "main.9616e09d.js.map": "/EZMod/static/js/main.9616e09d.js.map"
   },
   "entrypoints": [
-    "static/css/main.6be642f2.css",
-    "static/js/main.c6afe0a2.js"
+    "static/css/main.afb341ad.css",
+    "static/js/main.9616e09d.js"
   ]
 }
