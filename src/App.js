@@ -32,7 +32,7 @@ function App() {
       toggle={toggleTheme} 
       theme={theme}/>
       <Routes>
-      <Route path='/EZMod' exact element={<Home />} />
+      <Route path='/' exact element={<Home />} />
       <Route path='/ModInfo' element={<ModInfo />}/>
       <Route path='/ModSuggest' element={<ModSuggest />}/>
       <Route path='/about' element={<About />} />
