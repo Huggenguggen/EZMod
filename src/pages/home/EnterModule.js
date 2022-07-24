@@ -43,7 +43,11 @@ function EnterModule(props) {
     <>
       <div>
         <h3 id="moduleText">Module: </h3>
-        <form>
+        <form 
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleAddMod(newModText);
+          }}>
           <label>
             <Autocomplete
             items={moduleList}
@@ -64,6 +68,10 @@ function EnterModule(props) {
             />
           </label>
           <input 
+            onSubmit={(event) => {
+              event.preventDefault();
+              handleAddMod(event.target.value);
+            }}
             type="submit" 
             value="Add" 
           />
